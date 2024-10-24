@@ -22,7 +22,7 @@ function Home() {
       // If authenticated, fetch the posts
       const fetchPosts = async () => {
         try {
-          const response = await axios.get('http://localhost:3001/posts', { withCredentials: true });
+          const response = await axios.get('/posts', { withCredentials: true });
           setListOfPosts(response.data);
         } catch (error) {
           console.error('Error fetching posts:', error);

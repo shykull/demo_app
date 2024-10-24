@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     // Function to check if the user is authenticated
     const checkAuth = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/auth/status', { withCredentials: true });
+        const response = await axios.get('/auth/status', { withCredentials: true });
 
 
         if (response.data.loggedIn) {

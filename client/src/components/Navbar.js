@@ -14,7 +14,7 @@ function Navbar() {
 
   const handleLogout = () => {
     
-    axios.post('http://localhost:3001/auth/logout', {}, { withCredentials: true })
+    axios.post('/auth/logout', {}, { withCredentials: true })
       .then(() => {
         // Clear the JWT token cookie by setting its expiry date to the past
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
