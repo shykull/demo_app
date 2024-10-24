@@ -3,7 +3,7 @@ const router = express.Router();
 const { Posts, Likes } = require("../models");
 const {verifyToken}=require('../middleware/AuthMiddleware');
 
-router.get("/", async (req, res) => {
+router.get("/", verifyToken , async (req, res) => {
     const listOfPosts = await Posts.findAll({
       include: [Likes],
       order: [['id', 'ASC']] // Sort by PostId in ascending order
@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     res.json(listOfPosts);
   });
 
-router.get("/byId/:id", async (req, res) => {
+router.get("/byId/:id", verifyToken , async (req, res) => {
     const id = req.params.id;
     try {
         const post = await Posts.findByPk(id); // Correct method name

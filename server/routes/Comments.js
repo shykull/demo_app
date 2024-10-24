@@ -3,7 +3,7 @@ const router = express.Router();
 const { Comments } = require("../models");
 const {verifyToken}=require('../middleware/AuthMiddleware');
 
-router.get("/:postId", async (req, res) => {
+router.get("/:postId" ,verifyToken , async (req, res) => {
     const postId = req.params.postId;
     try {
         const comments = await Comments.findAll({where:{PostId: postId}}); // Correct method name

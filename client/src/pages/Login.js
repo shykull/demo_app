@@ -23,7 +23,7 @@ function Login() {
     });
     
     const onSubmit = (data) => {
-        axios.post("/auth/login", data, { withCredentials: true })  // Enable sending cookies
+        axios.post("http://localhost:3001/auth/login", data, { withCredentials: true })  // Enable sending cookies
             .then((response) => {
                 setAuth({ status: true, user: response.data.username, id: response.data.id, loading: false});
                 navigate("/"); // Redirect on success

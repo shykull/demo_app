@@ -50,7 +50,7 @@ function Registration() {
     };
 
     const onSubmit = (data) => {
-        axios.post("/auth", data)
+        axios.post("http://localhost:3001/auth", data)
         .then((response) => {
             
             navigate("/login"); // Redirect on success

@@ -4,31 +4,31 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
-const path = require("path");
+// const path = require("path");
 
 require('dotenv').config();  // Load .env file
 
-const _dirname = path.dirname("")
-const buildPath = path.join(_dirname, "../client/build")
+// const _dirname = path.dirname("")
+// const buildPath = path.join(_dirname, "../client/build")
 
 app.use(express.json());
-app.use(express.static(buildPath));
+// app.use(express.static(buildPath));
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:3001', // Frontend URL
+  origin: 'http://localhost:3000', // Frontend URL
   credentials: true, // Allow credentials (cookies)
 }));
 
-app.get("/*", function(req,res){
-  res.sendFile(
-    path.join(__dirname, "../client/build/index.html"),
-    function(err){
-      if (err){
-        res.status(500).send(err);
-      }
-    }
-  );
-})
+// app.get("/*", function(req,res){
+//   res.sendFile(
+//     path.join(__dirname, "../client/build/index.html"),
+//     function(err){
+//       if (err){
+//         res.status(500).send(err);
+//       }
+//     }
+//   );
+// })
 
 const db = require("./models");
 // Routers
