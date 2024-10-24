@@ -46,7 +46,7 @@ function Post() {
                 });
         }
 
-    }, [auth.status, auth.loading, navigate]); // Dependency array
+    }, [id, auth.status, auth.loading, navigate]); // Dependency array
     // Function to handle adding a comment
     const addComment = () => {
         // Check if comment is not empty
@@ -70,7 +70,7 @@ function Post() {
 
         axios.delete(`http://localhost:3001/comments/${id}`,{ withCredentials: true }).then((response) => {
             setComments(comments.filter((val) =>{
-                return val.id != id;
+                return val.id !== id;
             }))
         })
 
