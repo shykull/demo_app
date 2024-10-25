@@ -12,7 +12,7 @@ const Card = ({ imageSrc, title, text, link, linkText, postId, totalLikes: initi
     // Fetch the initial like status when the component mounts
     const fetchLikeStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/like/${postId}`, {
+        const response = await axios.get(`/api/like/${postId}`, {
           withCredentials: true, // This ensures cookies are included
         });
         setLiked(response.data.liked);
@@ -32,7 +32,7 @@ const Card = ({ imageSrc, title, text, link, linkText, postId, totalLikes: initi
       //setTotalLikes(prevTotal => (liked ? prevTotal - 1 : prevTotal + 1));
 
       const response = await axios.post(
-        "http://localhost:3001/like/",
+        "/api/like/",
         { PostId: postId },
         { withCredentials: true }
       );

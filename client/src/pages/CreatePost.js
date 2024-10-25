@@ -23,7 +23,7 @@ function CreatePost() {
 
     const onSubmit = (data) => {
        
-        axios.post("http://localhost:3001/posts", data,{ withCredentials: true }).then(() => {
+        axios.post("/api/posts", data,{ withCredentials: true }).then(() => {
             navigate("/"); // Redirect to home after successful post creation
         })
         .catch((error) => {

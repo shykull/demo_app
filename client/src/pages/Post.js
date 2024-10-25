@@ -29,7 +29,7 @@ function Post() {
         if (!auth.status){
             navigate("/login");
         } else {     
-            axios.get(`http://localhost:3001/posts/byId/${id}`, { withCredentials: true })
+            axios.get(`/api/posts/byId/${id}`, { withCredentials: true })
                 .then((response) => {
                     setPostObject(response.data);
                 })
@@ -37,7 +37,7 @@ function Post() {
                     console.error("Error fetching post:", error);
                 });
 
-            axios.get(`http://localhost:3001/comments/${id}`, { withCredentials: true })
+            axios.get(`/api/comments/${id}`, { withCredentials: true })
                 .then((response) => {
                     setComments(response.data);
                 })
@@ -55,7 +55,7 @@ function Post() {
             return;
         }
 
-        axios.post("http://localhost:3001/comments", 
+        axios.post("/api/comments", 
             { commentBody: newComment, PostId: id },
             { withCredentials: true }
         ).then((response) => {
@@ -68,7 +68,7 @@ function Post() {
     };
     const deleteComment = (id) => {
 
-        axios.delete(`http://localhost:3001/comments/${id}`,{ withCredentials: true }).then((response) => {
+        axios.delete(`/api/comments/${id}`,{ withCredentials: true }).then((response) => {
             setComments(comments.filter((val) =>{
                 return val.id !== id;
             }))
@@ -77,7 +77,7 @@ function Post() {
     };
     
     const deletePost = (id) => {
-        axios.delete(`http://localhost:3001/posts/byId/${id}`,{ withCredentials: true }).then((response) => {
+        axios.delete(`/api/posts/byId/${id}`,{ withCredentials: true }).then((response) => {
             navigate("/");
         })
 

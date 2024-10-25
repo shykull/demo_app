@@ -15,7 +15,7 @@ app.use(express.json());
 // app.use(express.static(buildPath));
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://localhost:3000', // Frontend URL
+  origin: '*', // Frontend URL
   credentials: true, // Allow credentials (cookies)
 }));
 
@@ -33,13 +33,13 @@ app.use(cors({
 const db = require("./models");
 // Routers
 const postRouter = require('./routes/Posts');
-app.use("/posts", postRouter);
+app.use("/api/posts", postRouter);
 const commentsRouter = require('./routes/Comments');
-app.use("/comments", commentsRouter);
+app.use("/api/comments", commentsRouter);
 const usersRouter = require('./routes/Users');
-app.use("/auth", usersRouter);
+app.use("/api/auth", usersRouter);
 const likesRouter = require('./routes/Likes');
-app.use("/like", likesRouter);
+app.use("/api/like", likesRouter);
 
 
 
